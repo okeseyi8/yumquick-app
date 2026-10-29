@@ -1,56 +1,62 @@
-# Welcome to your Expo app 👋
+# YumQuick
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+YumQuick is a food delivery app for iOS, Android and the web, built with Expo and React Native. You browse dishes from nearby kitchens, customize them, pay, and follow the order to your door.
 
-## Get started
+## What you can do
 
-1. Install dependencies
+- **Browse:** search, five categories (Snacks, Meal, Vegan, Dessert, Drinks), best sellers, promotions and recommendations.
+- **Filter:** by category, minimum rating, dish type and maximum price.
+- **Customize:** pick add-ons and quantity on any dish, and save favorites.
+- **Check out:** a slide-in cart, delivery address, payment method, then order confirmation.
+- **Track:** see the delivery route and each step from "accepted" to "delivered".
+- **Manage orders:** cancel active orders with a reason, review completed ones, or order them again.
+- **Account:** profile, saved addresses, cards and wallets, notification settings, password, and a help center with FAQs and contact options.
 
-   ```bash
-   npm install
-   ```
+## Tech stack
 
-2. Start the app
+- Expo SDK 58 with Expo Router (file-based routes in `src/app/`)
+- React Native 0.88, React 19
+- `react-native-svg` for the icon set, `expo-image` for photos
+- League Spartan font via `@expo-google-fonts/league-spartan`
+- Reanimated for drawer, list and status-screen motion
 
-   ```bash
-   npx expo start
-   ```
+## Project structure
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+  app/
+    (auth)/        login, sign up, set password, fingerprint
+    (app)/         everything behind login, with the bottom tab bar
+    index.tsx      launch screen
+    welcome.tsx    log in / sign up choice
+    onboarding.tsx
+  components/      UI kit, icons, cart and profile drawers, map
+  data.ts          menu, addresses, cards, FAQs (mock data)
+  store.tsx        app state: cart, favorites, orders, user
+  theme.ts         colors, fonts, radii
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+## Getting started
 
-### Other setup steps
+```bash
+npm install
+npx expo start
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Then press `i` for the iOS simulator, `a` for Android, `w` for the web, or scan the QR code with Expo Go. Every native module the app uses is included in Expo Go, so you don't need a custom build.
 
-## Learn more
+If code changes don't show up, restart with a clean cache: `npx expo start --clear`.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Status
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- All data is local mock data and resets when the app restarts. There is no backend yet.
+- Login accepts any email with a password of at least 6 characters.
+- Food photos load from Unsplash.
 
-## Join the community
+## Scripts
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+| Command | What it does |
+|---|---|
+| `npx expo start` | Start the dev server |
+| `npx expo lint` | Lint |
+| `npx tsc --noEmit` | Typecheck |
